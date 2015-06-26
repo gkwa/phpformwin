@@ -1,6 +1,26 @@
 <?php 
 
-	// example from here http://de.php.net/manual/en/session.examples.php
+error_log('testing', 4);
+
+require 'vendor/autoload.php';
+
+use Monolog\Logger;
+use Monolog\Handler\ErrorLogHandler;
+
+// create a log channel
+$log = new Logger('name');
+$log->pushHandler(new ErrorLogHandler(ErrorLogHandler::SAPI, Logger::WARNING));
+
+// add records to the log
+$log->addWarning('Foo');
+$log->addError('Bar');
+
+
+
+
+
+
+    // example from here http://de.php.net/manual/en/session.examples.php
 
     // Get the private context 
     session_name('Private'); 
