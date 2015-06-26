@@ -3,7 +3,7 @@ socket=localhost:8080
 
 test2:
 	-taskkill /F /IM php.exe 2>/dev/null
-	(PATH=phpwin/php php -c . -S "$(socket)" -t . form1.php &)
+	(PATH=phpwin/php php -c . -S "$(socket)" -t . form2.php &)
 	cygstart "http://$(socket)"
 
 test:
