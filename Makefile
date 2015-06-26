@@ -2,6 +2,11 @@ RM=rm -f
 socket=localhost:8080
 phpini=php.ini-development
 
+test3: phpwin/php php.ini
+	-taskkill /F /IM php.exe 2>/dev/null
+	(PATH=phpwin/php php.exe -c . -S "$(socket)" -t . form2.php &)
+	cygstart "http://$(socket)"
+
 test2: phpwin/php php.ini
 	-taskkill /F /IM php.exe 2>/dev/null
 	(PATH=phpwin/php php.exe -c . -S "$(socket)" -t . form2.php &)
@@ -12,7 +17,7 @@ test: phpwin/php
 	(PATH=phpwin/php php -c . -S "$(socket)" -t . phpinfo.php &)
 	cygstart "http://$(socket)"
 
-php.ini: phpwin/php/$(phpinin)
+php.ini: phpwin/php/$(phpini)
 	cp $< $@
 
 phpwin/php:
