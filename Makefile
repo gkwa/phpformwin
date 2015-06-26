@@ -1,5 +1,6 @@
 RM=rm -f
 socket=localhost:8080
+phpini=php.ini-development
 
 test2: phpwin/php php.ini
 	-taskkill /F /IM php.exe 2>/dev/null
@@ -11,13 +12,13 @@ test: phpwin/php
 	(PATH=phpwin/php php -c . -S "$(socket)" -t . phpinfo.php &)
 	cygstart "http://$(socket)"
 
-php.ini: phpwin/php/php.ini-production
+php.ini: phpwin/php/$(phpinin)
 	cp $< $@
 
 phpwin/php:
 	$(MAKE) -C phpwin
 
-phpwin/php/php.ini-production:
+phpwin/php/$(phpinin):
 	$(MAKE) -C phpwin
 
 clean:
