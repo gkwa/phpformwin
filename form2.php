@@ -1,4 +1,7 @@
 <?php 
+
+	// example from here http://de.php.net/manual/en/session.examples.php
+
     // Get the private context 
     session_name('Private'); 
     session_start(); 
