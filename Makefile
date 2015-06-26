@@ -1,7 +1,7 @@
 RM=rm -f
 socket=localhost:8080
 
-test2: phpwin/php
+test2: phpwin/php php.ini
 	-taskkill /F /IM php.exe 2>/dev/null
 	(PATH=phpwin/php php -c . -S "$(socket)" -t . form2.php &)
 	cygstart "http://$(socket)"
