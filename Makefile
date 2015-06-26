@@ -21,7 +21,7 @@ phpwin/php/php.ini-production:
 	$(MAKE) -C phpwin
 
 clean:
-	echo 'hello'
+	$(RM) php.ini
 
 veryclean:
 	$(MAKE) -C phpwin veryclean
